@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todoist/features/add_task/presentation/view/add_task_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -57,9 +58,20 @@ class _RegisterPageState extends State<RegisterPage> {
                       hintText: "Enter your name",
                     ),
               
-                    onFieldSubmitted: (value) {
+                    onChanged: (value) {
                       name = value;
                       
+                    },
+
+                    onFieldSubmitted: (value) {
+                      name = value;
+
+                      if (formkey.currentState?.validate() ?? false) {
+
+                        saveNameData(name!);
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => const TasksPage()));
+                      }
                     },
                   ),
               
@@ -74,6 +86,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     onPressed: (){
                       if (formkey.currentState?.validate() ?? false) {
+
+                        saveNameData(name!);
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(builder: (context) => const TasksPage()));
                       }
@@ -94,4 +108,11 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
+}
+
+
+saveNameData(String name) async{
+
+  SharedPreferences prefsName = await SharedPreferences.getInstance();
+      prefsName.setString("name", name);
 }

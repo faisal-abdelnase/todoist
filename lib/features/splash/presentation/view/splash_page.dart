@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todoist/features/add_task/presentation/view/add_task_page.dart';
 import 'package:todoist/features/register_using_name/presentation/view/register_page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -14,6 +16,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
 
   AnimationController? _controller;
   Animation<double>? _animation;
+  String? name;
   
 
   @override
@@ -30,11 +33,32 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
 
     _controller?.forward();
 
+    getNameData();
+
 
     Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const RegisterPage ()),
+        MaterialPageRoute(builder: (context) {
+          if(name == null){
+            return const RegisterPage ();
+          }
+
+          else{
+            return const TasksPage();
+          }
+          
+        } ),
       );
+    });
+  }
+
+
+  void getNameData() async{
+
+    SharedPreferences prefsName = await SharedPreferences.getInstance();
+    name = prefsName.getString("name")!;
+    setState(() {
+      
     });
   }
 
