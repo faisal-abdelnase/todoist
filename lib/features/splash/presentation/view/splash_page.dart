@@ -22,7 +22,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
 
 
     _controller = AnimationController(
-      duration: const  Duration(seconds: 3),
+      duration: const  Duration(seconds: 2),
       vsync: this,
     );
 
@@ -31,14 +31,49 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
     _controller?.forward();
 
 
-    Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const RegisterPage ()),
       );
     });
   }
+
+
+  @override
+  void dispose() {
+    _controller?.dispose();
+    super.dispose();
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Center(
+        child: FadeTransition(
+          opacity: _animation!,
+          child: const Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+          
+              CircleAvatar(
+                radius: 100,
+                backgroundImage: AssetImage('assets/images/task.png')),
+
+                SizedBox(
+                  height: 40,
+                ),
+
+                Text("TODOIST", 
+                style: TextStyle(
+                  fontSize: 32,
+                  fontFamily: 'Ga Maamli',
+                ),),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
