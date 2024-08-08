@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:todoist/features/add_task/presentation/view/add_task_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -68,12 +69,13 @@ class _RegisterPageState extends State<RegisterPage> {
               
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(100, 50),
+                      minimumSize: const Size(100, 50),
                       backgroundColor: const Color(0xffC92120),
                     ),
                     onPressed: (){
                       if (formkey.currentState?.validate() ?? false) {
-                        
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => const TasksPage()));
                       }
                     }, 
                     child: const Text("register", 
