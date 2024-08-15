@@ -2,11 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todoist/core/utils/colors.dart';
-import 'package:todoist/features/add_task/presentation/view/widgets/custom_icon_buttons.dart';
 import 'package:todoist/features/add_task/presentation/view/widgets/date_time_format.dart';
+import 'package:todoist/features/add_task/presentation/view/widgets/task_info_card.dart';
 
 class TasksPage extends StatefulWidget {
   const TasksPage({super.key});
@@ -42,6 +41,43 @@ class _TasksPageState extends State<TasksPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: papaya,
+        onPressed: () {
+          showModalBottomSheet(
+            backgroundColor: rock,
+            context: context, 
+            builder: (BuildContext context){
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    
+                    const Text("Task Title", 
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18
+                    ),),
+
+                    const SizedBox(
+                      height: 10,
+                    ),
+                
+                    TextFormField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                      ),
+                    )
+                  ],
+                ),
+              );
+            }
+            );
+        },
+
+        child: const Icon(Icons.add),
+      ),
       backgroundColor: rock,
       body: Padding(
         padding: const EdgeInsets.only(top: 50),
@@ -111,48 +147,7 @@ class _TasksPageState extends State<TasksPage> {
               ),
 
 
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                decoration: BoxDecoration(
-                  color: bodyGray,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Column(
-                  children: [
-                    ListTile(
-                      title: const Text("Learn with Faisal", 
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24
-                      ),),
-                      subtitle: Text("Flutter Course Todo App", 
-                      style: TextStyle(
-                        color: gray,
-                      ),),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(DateFormat('EE, MMM d, y').format( DateTime.now()).toString(), 
-                          style: TextStyle(
-                            color: gray,
-                          ),),
-
-                          const CustomIconButtons(),
-                        ],
-                      ),
-                    ),
-
-                    const SizedBox(
-                      height: 30,
-                    ),
-                  ],
-                ),
-              ),
-
+              const TaskInfoCard(),
 
             ],),
 
