@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todoist/core/utils/colors.dart';
+import 'package:todoist/features/add_task/presentation/view/widgets/custom_text_form_filled.dart';
 import 'package:todoist/features/add_task/presentation/view/widgets/date_time_format.dart';
 import 'package:todoist/features/add_task/presentation/view/widgets/task_info_card.dart';
 
@@ -48,7 +49,7 @@ class _TasksPageState extends State<TasksPage> {
             backgroundColor: rock,
             context: context, 
             builder: (BuildContext context){
-              return Padding(
+              return const Padding(
                 padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,11 +65,7 @@ class _TasksPageState extends State<TasksPage> {
                       height: 10,
                     ),
                 
-                    TextFormField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                      ),
-                    )
+                    CustomTextFormFilled()
                   ],
                 ),
               );
