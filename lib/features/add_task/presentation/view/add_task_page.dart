@@ -4,8 +4,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todoist/core/utils/colors.dart';
-import 'package:todoist/features/add_task/presentation/view/widgets/custom_text_form_filled.dart';
 import 'package:todoist/features/add_task/presentation/view/widgets/date_time_format.dart';
+import 'package:todoist/features/add_task/presentation/view/widgets/modal_bottom_sheet_body.dart';
 import 'package:todoist/features/add_task/presentation/view/widgets/task_info_card.dart';
 
 class TasksPage extends StatefulWidget {
@@ -46,29 +46,11 @@ class _TasksPageState extends State<TasksPage> {
         backgroundColor: papaya,
         onPressed: () {
           showModalBottomSheet(
+            isScrollControlled: true,
             backgroundColor: rock,
             context: context, 
             builder: (BuildContext context){
-              return const Padding(
-                padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    
-                    const Text("Task Title", 
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18
-                    ),),
-
-                    const SizedBox(
-                      height: 10,
-                    ),
-                
-                    CustomTextFormFilled()
-                  ],
-                ),
-              );
+              return const ModalBottomSheetBody();
             }
             );
         },
