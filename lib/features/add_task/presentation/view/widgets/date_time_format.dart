@@ -8,7 +8,7 @@ class DateTimeFormat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         child: Row(
           children: [
             Expanded(
@@ -27,14 +27,24 @@ class DateTimeFormat extends StatelessWidget {
                 ),),
               ),
             ),
+
+            const SizedBox(
+              width: 10,
+            ),
         
             Container(
+              width: 50,
+              height: 50,
               decoration: BoxDecoration(
-                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+                color: bodyGray.withOpacity(1),
               ),
         
-              child: Icon(Icons.refresh),
-            )
+              child: const Icon(
+                Icons.refresh,
+                color: Colors.white,
+                ),
+            ),
           ],
         ),
       );
