@@ -3,8 +3,9 @@ import 'package:todoist/core/utils/colors.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
-    super.key,
+    super.key, required this.text,
   });
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +19,9 @@ class CustomButton extends StatelessWidget {
           color: papaya,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: const Center(
-          child: Text("Create Task", 
-          style: TextStyle(
+        child: Center(
+          child: Text(text, 
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 18,
           ),)),

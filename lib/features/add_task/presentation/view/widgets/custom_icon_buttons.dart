@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todoist/core/utils/colors.dart';
+import 'package:todoist/features/add_task/presentation/view/edit_task_page.dart';
+
 
 class CustomIconButtons extends StatefulWidget {
   const CustomIconButtons({
@@ -18,7 +20,10 @@ class _CustomIconButtonsState extends State<CustomIconButtons> {
     return Row(
       children: [
         IconButton(
-          onPressed: (){}, 
+          onPressed: (){
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const EditTaskPage()));
+          }, 
           icon: Icon(Icons.edit, 
           color: teal),
           ),

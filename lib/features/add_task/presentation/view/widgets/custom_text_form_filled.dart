@@ -22,6 +22,7 @@ class CustomTextFormFilled extends StatelessWidget {
     
       style: const TextStyle(color: Colors.white),
       maxLines: maxLine,
+      cursorColor: papaya,
       
       decoration: InputDecoration(
         hintText: hintText,
@@ -31,6 +32,7 @@ class CustomTextFormFilled extends StatelessWidget {
     
         fillColor: bodyGray,
         filled: true,
+        
     
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: bodyGray),

@@ -49,8 +49,8 @@ class _TasksPageState extends State<TasksPage> {
             isScrollControlled: true,
             backgroundColor: rock,
             context: context, 
-            builder: (BuildContext context){
-              return const ModalBottomSheetBody();
+            builder: (context){
+              return const ModalBottomSheetBody(text: "Create Task",);
             }
             );
         },

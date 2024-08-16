@@ -4,13 +4,14 @@ import 'package:todoist/features/add_task/presentation/view/widgets/custom_text_
 
 class ModalBottomSheetBody extends StatelessWidget {
   const ModalBottomSheetBody({
-    super.key,
+    super.key, required this.text,
   });
+  final String text;
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 64, horizontal: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -42,13 +43,13 @@ class ModalBottomSheetBody extends StatelessWidget {
           ),
       
       
-          const CustomTextFormFilled(hintText: "Type Description here...", maxLine: 5,),
-
+          const CustomTextFormFilled(hintText: "Type Description here...", maxLine: 8,),
+      
           const SizedBox(
-            height: 20,
+            height: 32,
           ),
-
-          CustomButton(),
+      
+          CustomButton(text: text,),
       
         ],
       ),
