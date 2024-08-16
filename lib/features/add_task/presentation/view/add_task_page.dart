@@ -17,7 +17,7 @@ class TasksPage extends StatefulWidget {
 
 class _TasksPageState extends State<TasksPage> {
 
-  late String name;
+  String? name;
   
 
 
@@ -68,7 +68,7 @@ class _TasksPageState extends State<TasksPage> {
                 fontSize: 18,
                 color: Colors.white
               ),),
-              Text(name, 
+              Text(name ?? "", 
               style: const TextStyle(
                 fontSize: 24,
                 color: Colors.white,

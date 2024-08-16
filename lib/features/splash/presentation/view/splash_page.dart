@@ -56,7 +56,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
   void getNameData() async{
 
     SharedPreferences prefsName = await SharedPreferences.getInstance();
-    name = prefsName.getString("name")!;
+    name = prefsName.getString("name");
     setState(() {
       
     });

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:todoist/core/utils/colors.dart';
 import 'package:todoist/features/add_task/presentation/view/edit_task_page.dart';
+import 'package:todoist/features/add_task/presentation/view/widgets/deleted_dialog.dart';
+
 
 
 class CustomIconButtons extends StatefulWidget {
@@ -29,7 +31,17 @@ class _CustomIconButtonsState extends State<CustomIconButtons> {
           ),
 
           IconButton(
-          onPressed: (){}, 
+          onPressed: (){
+            showDialog(
+              context: context, 
+              
+              builder: (context){
+                return Dialog(
+                  backgroundColor: bodyGray,
+                  child: const DeletedDialog(),
+                );
+              });
+          }, 
           icon: Icon(Icons.delete, 
           color: red),
           ),
@@ -53,3 +65,4 @@ class _CustomIconButtonsState extends State<CustomIconButtons> {
     );
   }
 }
+
