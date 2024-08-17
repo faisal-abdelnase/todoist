@@ -7,3 +7,5 @@ Color red = const Color(0xffC92120);
 Color rock = const Color(0xff303642);
 Color teal = const Color(0xff308886);
 Color bodyGray = const Color(0xff3D4552);
+
+const kTodoistBox = "todoist_box";

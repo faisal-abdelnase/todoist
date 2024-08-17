@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:todoist/core/utils/colors.dart';
+import 'package:todoist/core/utils/constans.dart';
 
 class DateTimeFormat extends StatelessWidget {
   const DateTimeFormat({super.key});
