@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:todoist/core/utils/colors.dart';
+import 'package:todoist/core/utils/constans.dart';
 
 class CustomTextFormFilled extends StatelessWidget {
   const CustomTextFormFilled({
-    super.key, required this.maxLine, required this.hintText,
+    super.key, required this.maxLine, required this.hintText, required this.onChanged,
   });
 
   final int maxLine;
   final String hintText;
+  final Function(String) onChanged;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+
+      onChanged: onChanged,
       validator: (value) {
         if(value!.isEmpty){
           return "filed is require";

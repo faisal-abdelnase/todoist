@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todoist/core/utils/colors.dart';
+import 'package:todoist/core/utils/constans.dart';
 import 'package:todoist/features/add_task/presentation/view/edit_task_page.dart';
 import 'package:todoist/features/add_task/presentation/view/widgets/deleted_dialog.dart';
 

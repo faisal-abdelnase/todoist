@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoist/core/utils/constans.dart';
-import 'package:todoist/features/add_task/presentation/view/widgets/modal_bottom_sheet_body.dart';
+import 'package:todoist/features/add_task/presentation/view/widgets/edit_task_body.dart';
 
 class EditTaskPage extends StatelessWidget {
   const EditTaskPage({super.key});
@@ -10,7 +10,7 @@ class EditTaskPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: rock,
       body: const SingleChildScrollView(
-        child: ModalBottomSheetBody(text: "Update Task",)),
+        child: EditTaskBody(text: "Update Task",)),
     );
   }
 }

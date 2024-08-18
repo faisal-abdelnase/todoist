@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:todoist/core/utils/colors.dart';
+import 'package:todoist/core/utils/constans.dart';
+import 'package:todoist/features/add_task/data/model/todoist_model.dart';
 import 'package:todoist/features/add_task/presentation/view/widgets/custom_icon_buttons.dart';
 
-class TaskInfoCard extends StatelessWidget {
-  const TaskInfoCard({super.key});
+class TaskItem extends StatelessWidget {
+  const TaskItem({super.key, required this.todoistModel});
+
+  final TodoistModel todoistModel;
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +19,12 @@ class TaskInfoCard extends StatelessWidget {
                 child: Column(
                   children: [
                     ListTile(
-                      title: const Text("Learn with Faisal", 
-                      style: TextStyle(
+                      title: Text(todoistModel.title, 
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 24
                       ),),
-                      subtitle: Text("Flutter Course Todo App", 
+                      subtitle: Text(todoistModel.subtitle, 
                       style: TextStyle(
                         color: gray,
                       ),),
@@ -33,7 +35,7 @@ class TaskInfoCard extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(DateFormat('EE, MMM d, y').format( DateTime.now()).toString(), 
+                          Text(todoistModel.date, 
                           style: TextStyle(
                             color: gray,
                           ),),
@@ -43,9 +45,9 @@ class TaskInfoCard extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(
-                      height: 30,
-                    ),
+                    // const SizedBox(
+                    //   height: 30,
+                    // ),
                   ],
                 ),
               );
