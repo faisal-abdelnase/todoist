@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todoist/core/utils/constans.dart';
+import 'package:todoist/features/add_task/data/model/todoist_model.dart';
+import 'package:todoist/features/add_task/presentation/manager/get_tasks_cubit/get_tasks_cubit.dart';
 import 'package:todoist/features/add_task/presentation/view/widgets/dialog_button.dart';
 
 class DeletedDialog extends StatelessWidget {
   const DeletedDialog({
-    super.key,
+    super.key, required this.todoistModel,
   });
+
+  final TodoistModel todoistModel;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +59,10 @@ class DeletedDialog extends StatelessWidget {
               textButton: "Yes", 
               buttonColor: red,
               onPressed: () {
+                todoistModel.delete();
+                BlocProvider.of<GetTasksCubit>(context).getAllTasks();
                 Navigator.of(context).pop();
+
               },
               ),
     

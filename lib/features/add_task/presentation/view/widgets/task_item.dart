@@ -11,7 +11,7 @@ class TaskItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                margin: const EdgeInsets.symmetric(horizontal: 16,),
                 decoration: BoxDecoration(
                   color: bodyGray,
                   borderRadius: BorderRadius.circular(12),
@@ -40,14 +40,11 @@ class TaskItem extends StatelessWidget {
                             color: gray,
                           ),),
 
-                          const CustomIconButtons(),
+                          CustomIconButtons(todoistModel: todoistModel,),
                         ],
                       ),
                     ),
 
-                    // const SizedBox(
-                    //   height: 30,
-                    // ),
                   ],
                 ),
               );

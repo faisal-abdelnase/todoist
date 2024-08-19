@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todoist/core/utils/constans.dart';
-import 'package:todoist/features/add_task/presentation/manager/add_task_cubit/add_task_cubit.dart';
 import 'package:todoist/features/add_task/presentation/manager/get_tasks_cubit/get_tasks_cubit.dart';
 import 'package:todoist/features/add_task/presentation/view/widgets/date_time_format.dart';
 import 'package:todoist/features/add_task/presentation/view/widgets/modal_bottom_sheet_body.dart';
@@ -21,8 +18,9 @@ class _TasksPageState extends State<TasksPage> {
   String? name;
 
   void initState() {
-    // TODO: implement initState
     super.initState();
+
+    BlocProvider.of<GetTasksCubit>(context).getAllTasks();
 
     getNameData();
   }
@@ -115,6 +113,10 @@ class _TasksPageState extends State<TasksPage> {
                   ),
                   const Expanded(
                     child: TaskItemListView()),
+
+                    const SizedBox(
+                      height: 32,
+                    ),
                 ],
               ),
             ),

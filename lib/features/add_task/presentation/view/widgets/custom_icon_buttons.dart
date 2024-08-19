@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoist/core/utils/constans.dart';
+import 'package:todoist/features/add_task/data/model/todoist_model.dart';
 import 'package:todoist/features/add_task/presentation/view/edit_task_page.dart';
 import 'package:todoist/features/add_task/presentation/view/widgets/deleted_dialog.dart';
 
@@ -7,8 +8,10 @@ import 'package:todoist/features/add_task/presentation/view/widgets/deleted_dial
 
 class CustomIconButtons extends StatefulWidget {
   const CustomIconButtons({
-    super.key,
+    super.key, required this.todoistModel,
   });
+
+  final TodoistModel todoistModel;
 
   @override
   State<CustomIconButtons> createState() => _CustomIconButtonsState();
@@ -24,7 +27,7 @@ class _CustomIconButtonsState extends State<CustomIconButtons> {
         IconButton(
           onPressed: (){
             Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const EditTaskPage()));
+              MaterialPageRoute(builder: (context) => EditTaskPage(todoistModel: widget.todoistModel,)));
           }, 
           icon: Icon(Icons.edit, 
           color: teal),
@@ -38,7 +41,7 @@ class _CustomIconButtonsState extends State<CustomIconButtons> {
               builder: (context){
                 return Dialog(
                   backgroundColor: bodyGray,
-                  child: const DeletedDialog(),
+                  child: DeletedDialog(todoistModel: widget.todoistModel,),
                 );
               });
           }, 
