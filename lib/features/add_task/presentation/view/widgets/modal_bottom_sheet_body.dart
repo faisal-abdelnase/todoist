@@ -95,7 +95,8 @@ class _ModalBottomSheetBodyState extends State<ModalBottomSheetBody> {
                             var todoistModel = TodoistModel(
                                 title: title!,
                                 subtitle: subTitle!,
-                                date: currentDate);
+                                date: currentDate,
+                                isFinsh: false);
 
                             BlocProvider.of<AddTaskCubit>(context)
                                 .addTask(todoistModel);

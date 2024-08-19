@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todoist/core/utils/constans.dart';
 import 'package:todoist/features/add_task/data/model/todoist_model.dart';
+import 'package:todoist/features/add_task/presentation/view/add_task_page.dart';
 import 'package:todoist/features/add_task/presentation/view/edit_task_page.dart';
 import 'package:todoist/features/add_task/presentation/view/widgets/deleted_dialog.dart';
 
@@ -18,8 +19,6 @@ class CustomIconButtons extends StatefulWidget {
 }
 
 class _CustomIconButtonsState extends State<CustomIconButtons> {
-
-  bool isCheck = true;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -56,9 +55,12 @@ class _CustomIconButtonsState extends State<CustomIconButtons> {
 
             activeColor: Colors.yellow,
             
-            value: isCheck, 
+            value: widget.todoistModel.isFinsh, 
             onChanged: (value){
-              isCheck = value!;
+              widget.todoistModel.isFinsh  = value!;
+              widget.todoistModel.save();
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => const TasksPage()));
               setState(() {
                 
               });

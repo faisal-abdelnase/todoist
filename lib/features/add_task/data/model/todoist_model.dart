@@ -12,6 +12,12 @@ class TodoistModel extends HiveObject{
   String subtitle;
   @HiveField(2)
   final String date;
+  @HiveField(3)
+  bool isFinsh;
 
-  TodoistModel({required this.title, required this.subtitle, required this.date});
+  TodoistModel(
+    {required this.title, 
+    required this.subtitle, 
+    required this.date, 
+    required this.isFinsh});
 }
