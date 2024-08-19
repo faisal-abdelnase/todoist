@@ -41,7 +41,7 @@ class _EditTaskBodyState extends State<EditTaskBody> {
             onChanged: (value) {
               title = value;
             },
-            hintText: "Type Title here...", 
+            hintText: widget.todoistModel.title, 
             maxLine: 1,),
       
           const SizedBox(
@@ -63,7 +63,7 @@ class _EditTaskBodyState extends State<EditTaskBody> {
             onChanged: (value) {
               subTitle = value;
             },
-            hintText: "Type Description here...", 
+            hintText: widget.todoistModel.subtitle, 
             maxLine: 8,),
       
           const SizedBox(
