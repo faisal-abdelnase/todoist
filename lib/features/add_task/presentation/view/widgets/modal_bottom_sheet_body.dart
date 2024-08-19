@@ -100,6 +100,14 @@ class _ModalBottomSheetBodyState extends State<ModalBottomSheetBody> {
 
                             BlocProvider.of<AddTaskCubit>(context)
                                 .addTask(todoistModel);
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    backgroundColor: Colors.green,
+                                    content: Text("Created"),
+                                    duration: Duration(seconds: 3),
+                                    )
+                                );
                                   
                           } else {
                             autovalidateMode = AutovalidateMode.always;

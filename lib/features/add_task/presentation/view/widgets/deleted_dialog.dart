@@ -61,6 +61,13 @@ class DeletedDialog extends StatelessWidget {
               onPressed: () {
                 todoistModel.delete();
                 BlocProvider.of<GetTasksCubit>(context).getAllTasks();
+                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    backgroundColor: Colors.green,
+                                    content: Text("Task is deleted"),
+                                    duration: Duration(seconds: 3),
+                                    )
+                                );
                 Navigator.of(context).pop();
 
               },

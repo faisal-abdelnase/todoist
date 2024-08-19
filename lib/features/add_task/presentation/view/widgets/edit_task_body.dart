@@ -78,6 +78,13 @@ class _EditTaskBodyState extends State<EditTaskBody> {
               widget.todoistModel.save();
 
               BlocProvider.of<GetTasksCubit>(context).getAllTasks();
+              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    backgroundColor: Colors.green,
+                                    content: Text("Updated"),
+                                    duration: Duration(seconds: 3),
+                                    )
+                                );
               Navigator.of(context).pop();
             },
             text: widget.text,),
