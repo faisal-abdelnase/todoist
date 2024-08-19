@@ -34,6 +34,9 @@ class _ModalBottomSheetBodyState extends State<ModalBottomSheetBody> {
           } else if (state is AddTaskSucccess) {
             BlocProvider.of<GetTasksCubit>(context).getAllTasks();
             Navigator.pop(context);
+            setState(() {
+              
+            });
           }
         },
         builder: (context, state) {
@@ -82,7 +85,7 @@ class _ModalBottomSheetBodyState extends State<ModalBottomSheetBody> {
                     builder: (context, state) {
                       return CustomButton(
                         isLoading: state is AddTaskLoading ? true : false,
-                        onTap: () {
+                        onTap: () async {
                           if (formKey.currentState!.validate()) {
                             formKey.currentState!.save();
 
@@ -96,6 +99,7 @@ class _ModalBottomSheetBodyState extends State<ModalBottomSheetBody> {
 
                             BlocProvider.of<AddTaskCubit>(context)
                                 .addTask(todoistModel);
+                                  
                           } else {
                             autovalidateMode = AutovalidateMode.always;
                             setState(() {});

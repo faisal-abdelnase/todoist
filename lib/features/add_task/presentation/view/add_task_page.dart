@@ -32,8 +32,10 @@ class _TasksPageState extends State<TasksPage> {
   }
 
   @override
-  Widget build(BuildContext context) { 
-    return Scaffold(
+  Widget build(BuildContext context) {
+    return BlocBuilder<GetTasksCubit, GetTasksState>(
+      builder: (context, state) {
+        return Scaffold(
           floatingActionButton: FloatingActionButton(
             backgroundColor: papaya,
             onPressed: () {
@@ -83,11 +85,11 @@ class _TasksPageState extends State<TasksPage> {
                             borderRadius: BorderRadius.circular(12),
                             color: papaya,
                           ),
-                          child: const Center(
+                          child: Center(
                               child: Text(
-                            "1",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18),
+                            "${BlocProvider.of<GetTasksCubit>(context).numberOfTasks}",
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 18),
                           )),
                         ),
                       ],
@@ -111,17 +113,16 @@ class _TasksPageState extends State<TasksPage> {
                       ),
                     ),
                   ),
-                  const Expanded(
-                    child: TaskItemListView()),
-
-                    const SizedBox(
-                      height: 32,
-                    ),
+                  const Expanded(child: TaskItemListView()),
+                  const SizedBox(
+                    height: 32,
+                  ),
                 ],
               ),
             ),
           ),
         );
-      }
+      },
+    );
   }
-
+}

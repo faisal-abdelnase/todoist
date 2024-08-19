@@ -9,3 +9,4 @@ Color teal = const Color(0xff308886);
 Color bodyGray = const Color(0xff3D4552);
 
 const kTodoistBox = "todoist_box";
+const kNumberOfTasks = "numberOfTasks";

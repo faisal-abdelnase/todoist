@@ -11,11 +11,20 @@ class GetTasksCubit extends Cubit<GetTasksState> {
 
   List<TodoistModel>? tasks;
 
+  int numberOfTasks = 0;
+
   getAllTasks(){
 
     var todoistBox = Hive.box<TodoistModel>(kTodoistBox);
 
     tasks = todoistBox.values.toList();
+
+    if(tasks == null){
+      numberOfTasks = 0;
+    }
+    else{
+      numberOfTasks = tasks!.length;
+    }
     emit(GetTasksSucccess());
   }
 }
